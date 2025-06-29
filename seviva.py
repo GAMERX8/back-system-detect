@@ -21,7 +21,7 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 
 # === Inicializar Firebase ===
 if not firebase_admin._apps:
-    cred = credentials.Certificate("serviceAccountKey.json")
+    cred = credentials.Certificate("GOOGLE_CLOUD_KEY")
     firebase_admin.initialize_app(cred, {
         "databaseURL": "https://system-detect-default-rtdb.firebaseio.com/",
         "storageBucket": "system-detect.firebasestorage.app"

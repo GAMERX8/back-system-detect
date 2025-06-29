@@ -1,8 +1,13 @@
 {
+  "version": 2,
   "builds": [
     {
-      "src": "template/index.html",
+      "src": "templates/index.html",
       "use": "@vercel/static"
+    },
+    {
+      "src": "seviva.py",
+      "use": "@vercel/python"
     }
   ]
 }
