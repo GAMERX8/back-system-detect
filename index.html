@@ -9,18 +9,26 @@
 <body>
   <header>
     <h1>System Detection</h1>
-    <p>Este es el sistema de vigilancia.</p>
+    <p>Este es el sistema de detección de objetos en tiempo real.</p>
   </header>
 
   <main>
     <h2>Camera Feed</h2>
     <div id="camera-container">
-      <img id="camera-feed" src="https://back-system-detect.vercel.app/stream" alt="Camera Stream" />
+      <img id="camera-feed" alt="Camera Stream" />
     </div>
   </main>
 
   <footer>
     <p>© 2025 System Detection</p>
   </footer>
+
+  <script>
+    // Obtén la URL de Vercel o usa localhost en desarrollo
+    const baseURL = window.location.hostname === 'localhost' ? 'http://localhost:5000' : 'https://tu-proyecto.vercel.app';
+    
+    // Configura la URL del stream de la cámara
+    document.getElementById('camera-feed').src = `${baseURL}/stream`;
+  </script>
 </body>
 </html>
