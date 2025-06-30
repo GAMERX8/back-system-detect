@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "templates/index.html",
+      "src": "template/index.html",
       "use": "@vercel/static"
     },
     {
@@ -17,7 +17,7 @@
     },
     {
       "src": "/",
-      "dest": "/templates/index.html"
+      "dest": "/template/index.html"
     }
   ]
 }
