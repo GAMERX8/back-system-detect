@@ -2,10 +2,6 @@
   "version": 2,
   "builds": [
     {
-      "src": "template/index.html",
-      "use": "@vercel/static"
-    },
-    {
       "src": "seviva.py",
       "use": "@vercel/python"
     }
@@ -17,7 +13,7 @@
     },
     {
       "src": "/",
-      "dest": "/template/index.html"
+      "dest": "/templates/index.html"
     }
   ]
 }

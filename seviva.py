@@ -13,6 +13,7 @@ from flask_cors import CORS
 import threading
 import time
 import firebase_admin
+import json
 from firebase_admin import credentials, db, storage
 
 app = Flask(__name__)
@@ -21,7 +22,8 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 
 # === Inicializar Firebase ===
 if not firebase_admin._apps:
-    cred = credentials.Certificate("GOOGLE_CLOUD_KEY")
+    google_cloud_key = os.getenv('GOOGLE_CLOUD_KEY')
+    cred = credentials.Certificate(json.loads(google_cloud_key))
     firebase_admin.initialize_app(cred, {
         "databaseURL": "https://system-detect-default-rtdb.firebaseio.com/",
         "storageBucket": "system-detect.firebasestorage.app"
@@ -172,11 +174,13 @@ def process_frame():
 @app.route("/stream")
 def stream():
     def generate():
-        while True:
-            with frame_lock:
-                if latest_frame:
-                    yield (b"--frame\r\nContent-Type: image/jpeg\r\n\r\n" + latest_frame + b"\r\n")
+        with frame_lock:
+            if latest_frame:
+                yield (b"--frame\r\nContent-Type: image/jpeg\r\n\r\n" + latest_frame + b"\r\n")
+            else:
+                yield (b"--frame\r\nContent-Type: text/plain\r\n\r\nNo frame available\r\n")
     return Response(generate(), mimetype="multipart/x-mixed-replace; boundary=frame")
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
