@@ -2,12 +2,22 @@
   "version": 2,
   "builds": [
     {
-      "src": "index.html",
+      "src": "templates/index.html",
       "use": "@vercel/static"
     },
     {
       "src": "seviva.py",
       "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/stream",
+      "dest": "/seviva.py"
+    },
+    {
+      "src": "/",
+      "dest": "/templates/index.html"
     }
   ]
 }

@@ -1,16 +1,26 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Vista en Tiempo Real</title>
-  <style>
-    body { background: #111; color: #fff; text-align: center; font-family: Arial; }
-    h1 { margin-top: 30px; }
-    img { border: 4px solid #0f0; margin-top: 20px; }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Detection</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Stream de Detección</h1>
-  <img src="/stream" alt="Stream" width="640" height="480">
+  <header>
+    <h1>System Detection</h1>
+    <p>Este es el sistema de vigilancia.</p>
+  </header>
+
+  <main>
+    <h2>Camera Feed</h2>
+    <div id="camera-container">
+      <img id="camera-feed" src="https://back-system-detect.vercel.app/stream" alt="Camera Stream" />
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 System Detection</p>
+  </footer>
 </body>
 </html>
